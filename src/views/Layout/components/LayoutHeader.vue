@@ -1,20 +1,15 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category'
-
-const categoryStore = useCategoryStore()
+import LayoutHeaderUl from './LayoutHeaderUI.vue'
 </script>
 
 <template>
-    <header class="app-header">
+    <header class='app-header'>
         <div class="container">
             <h1 class="logo">
-                <router-link to="/">商城</router-link>
+                <RouterLink to="/">小兔鲜</RouterLink>
             </h1>
-            <ui class="app-header-nav">
-                <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
-                    <router-link to="/">{{ item.name }}</router-link>
-                </li>
-            </ui>
+
+            <LayoutHeaderUl />
             <div class="search">
                 <i class="iconfont icon-search"></i>
                 <input type="text" placeholder="搜一搜">
@@ -23,94 +18,105 @@ const categoryStore = useCategoryStore()
     </header>
 </template>
 
-<style scoped>
+<style scoped lang='scss'>
 .app-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: absolute; /* Stick to the top */
-    top: 80px; /* Positioned below the nav */
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #fff;
-}
+    background: white;
 
-.app-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: nowrap;
-}
-
-.app-header .logo {
-    margin-right: 20px;
-    display: flex;
-    align-items: center; /* Ensure h1 is horizontally aligned */
-    white-space: nowrap; /* Prevent h1 from wrapping */
-    overflow: hidden; /* Hide overflow if content exceeds container */
-    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
-}
-
-.app-header .container ui {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-}
-
-.app-header .container ui li {
-    margin-left: 20px;
-    white-space: nowrap;
-}
-
-.app-header .search {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    flex-shrink: 0;
-    margin-left: 40px; /* Added spacing between search bar and li */
-}
-
-.app-header .search input {
-    margin-left: 10px;
-    flex-shrink: 0;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .app-header {
-        flex-wrap: wrap;
-        padding: 10px;
-        top: 0; /* Adjust for mobile to stick at the top */
+    .container {
+        display: flex;
+        align-items: center;
     }
 
-    .app-header .container {
-        flex-wrap: wrap;
+    .logo {
+        width: 200px;
+
+        a {
+            display: block;
+            height: 132px;
+            width: 100%;
+            text-indent: -9999px;
+            background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
+        }
     }
 
-    .app-header .container ui {
-        flex-wrap: wrap;
+
+    .search {
+        width: 170px;
+        height: 32px;
+        position: relative;
+        border-bottom: 1px solid #e7e7e7;
+        line-height: 32px;
+
+        .icon-search {
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        input {
+            width: 140px;
+            padding-left: 5px;
+            color: #666;
+        }
     }
 
-    .app-header .container ui li {
-        margin-left: 10px;
-    }
+    .cart {
+        width: 50px;
 
-    .app-header .search {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: flex-end;
-    }
+        .curr {
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            position: relative;
+            display: block;
 
-    .app-header .search input {
-        width: auto;
+            .icon-cart {
+                font-size: 22px;
+            }
+
+            em {
+                font-style: normal;
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 1px 6px;
+                line-height: 1;
+                background: $helpColor;
+                color: #fff;
+                font-size: 12px;
+                border-radius: 10px;
+                font-family: Arial;
+            }
+        }
+    }
+}
+
+.app-header-nav {
+    width: 820px;
+    display: flex;
+    padding-left: 40px;
+    position: relative;
+
+    li {
+        margin-right: 40px;
+        width: 38px;
+        text-align: center;
+
+        a {
+            font-size: 16px;
+            line-height: 32px;
+            height: 32px;
+            display: inline-block;
+
+            &:hover {
+                color: $xtxColor;
+                border-bottom: 1px solid $xtxColor;
+            }
+        }
+
+        .active {
+            color: $xtxColor;
+            border-bottom: 1px solid $xtxColor;
+        }
     }
 }
 </style>

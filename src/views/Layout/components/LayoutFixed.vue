@@ -10,13 +10,13 @@ const categoryStore = useCategoryStore()
     <div class="app-header-sticky" :class="{ show: y > 78 }">
         <div class="container">
             <h1 class="logo">
-                <router-link to="/">商城</router-link>
+                <router-link to="/"></router-link>
             </h1>
-            <ui class="app-header-nav">
+            <ul class="app-header-nav">
                 <li class="home" v-for="item in categoryStore.categoryList" :key="item.id">
                     <router-link to="/">{{ item.name }}</router-link>
                 </li>
-            </ui>
+            </ul>
             <div class="search">
                 <i class="iconfont icon-search"></i>
                 <input type="text" placeholder="搜一搜">
@@ -24,102 +24,156 @@ const categoryStore = useCategoryStore()
         </div>
     </div>
 </template>
-
-<style scoped>
+<style scoped lang='scss'>
 .app-header-sticky {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 10px;
-    left: 0;
-    right: 0;
     width: 100%;
-    padding: 0;
-    box-sizing: border-box;
+    height: 80px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
     background-color: #fff;
+    border-bottom: 1px solid #e4e4e4;
     transform: translateY(-100%);
     opacity: 0;
+
+    &.show {
+        transition: all 0.3s linear;
+        transform: none;
+        opacity: 1;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 200px;
+        height: 80px;
+        background: url("@/assets/images/logo.png") no-repeat right 2px;
+        background-size: 160px auto;
+    }
+
+    .right {
+        width: 220px;
+        display: flex;
+        text-align: center;
+        padding-left: 40px;
+        border-left: 2px solid $xtxColor;
+
+        a {
+            width: 38px;
+            margin-right: 40px;
+            font-size: 16px;
+            line-height: 1;
+
+            &:hover {
+                color: $xtxColor;
+            }
+        }
+    }
 }
 
-.app-header-sticky.show {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    transform: translateY(0);
-    opacity: 1;
+.app-header {
+    background: #fff;
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo {
+        width: 200px;
+
+        a {
+            display: block;
+            height: 132px;
+            width: 100%;
+            text-indent: -9999px;
+            background: url('@/assets/images/logo.png') no-repeat center 18px / contain;
+        }
+    }
+
+
+    .search {
+        width: 170px;
+        height: 32px;
+        position: relative;
+        border-bottom: 1px solid #e7e7e7;
+        line-height: 32px;
+
+        .icon-search {
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        input {
+            width: 140px;
+            padding-left: 5px;
+            color: #666;
+        }
+    }
+
+    .cart {
+        width: 50px;
+
+        .curr {
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            position: relative;
+            display: block;
+
+            .icon-cart {
+                font-size: 22px;
+            }
+
+            em {
+                font-style: normal;
+                position: absolute;
+                right: 0;
+                top: 0;
+                padding: 1px 6px;
+                line-height: 1;
+                background: $helpColor;
+                color: #fff;
+                font-size: 12px;
+                border-radius: 10px;
+                font-family: Arial;
+            }
+        }
+    }
 }
 
-.app-header-sticky .container {
+.app-header-nav {
+    width: 820px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: nowrap;
-}
+    padding-left: 40px;
+    position: relative;
+    z-index: 998;
 
-.app-header-sticky .logo {
-    margin-right: 20px;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
+    li {
+        margin-right: 40px;
+        width: 38px;
+        text-align: center;
 
-.app-header-sticky .container ui {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    flex-grow: 1;
-}
+        a {
+            font-size: 16px;
+            line-height: 32px;
+            height: 32px;
+            display: inline-block;
 
-.app-header-sticky .container ui li {
-    margin-left: 20px;
-    white-space: nowrap;
-}
+            &:hover {
+                color: $xtxColor;
+                border-bottom: 1px solid $xtxColor;
+            }
+        }
 
-.app-header-sticky .search {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    flex-shrink: 0;
-    margin-left: 40px;
-}
-
-.app-header-sticky .search input {
-    margin-left: 10px;
-    flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-    .app-header-sticky {
-        flex-wrap: wrap;
-        padding: 10px;
-        top: 0;
-    }
-
-    .app-header-sticky .container {
-        flex-wrap: wrap;    
-    }
-
-    .app-header-sticky .container ul {
-        flex-wrap: wrap;
-    }
-
-    .app-header-sticky .container ul li {
-        margin-left: 10px;
-    }
-
-    .app-header-sticky .search {
-        margin-top: 10px;
-        width: 100%;
-        justify-content: flex-end;
-    }
-
-    .app-header-sticky .search input {
-        width: auto;
+        .active {
+            color: $xtxColor;
+            border-bottom: 1px solid $xtxColor;
+        }
     }
 }
 </style>

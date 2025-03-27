@@ -1,118 +1,229 @@
 <template>
-    <footer class="app-footer">
+    <footer class="app_footer">
+        <!-- 联系我们 -->
         <div class="contact">
             <div class="container">
                 <dl>
                     <dt>客户服务</dt>
-                    <dd><i class="iconfont icon-kefu"></i>在线客服</dd>
-                    <dd><i class="iconfont icon-question"></i>问题反馈</dd>
+                    <dd><i class="iconfont icon-kefu"></i> 在线客服</dd>
+                    <dd><i class="iconfont icon-question"></i> 问题反馈</dd>
                 </dl>
                 <dl>
                     <dt>关注我们</dt>
-                    <dd><i class="iconfont icon-iconfontweixin"></i>公众号</dd>
-                    <dd><i class="iconfont icon-weibo"></i>微博</dd>
+                    <dd><i class="iconfont icon-iconfontweixin"></i> 公众号</dd>
+                    <dd><i class="iconfont icon-weibo"></i> 微博</dd>
+                </dl>
+                <dl>
+                    <dt>下载APP</dt>
+                    <dd class="qrcode"><img src="@/assets/images/qrcode.jpg" /></dd>
+                    <dd class="download">
+                        <span>扫描二维码</span>
+                        <span>立马下载APP</span>
+                        <a href="javascript:;">下载页面</a>
+                    </dd>
                 </dl>
                 <dl>
                     <dt>服务热线</dt>
-                    <dd class="hostline">400-0000-000<br><small>周一至周日</small></dd>
+                    <dd class="hotline">400-0000-000 <small>周一至周日 8:00-18:00</small></dd>
                 </dl>
+            </div>
+        </div>
+        <!-- 其它 -->
+        <div class="extra">
+            <div class="container">
+                <div class="slogan">
+                    <a href="javascript:;">
+                        <i class="iconfont icon-footer01"></i>
+                        <span>价格亲民</span>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="iconfont icon-footer02"></i>
+                        <span>物流快捷</span>
+                    </a>
+                    <a href="javascript:;">
+                        <i class="iconfont icon-footer03"></i>
+                        <span>品质新鲜</span>
+                    </a>
+                </div>
+                <!-- 版权信息 -->
+                <div class="copyright">
+                    <p>
+                        <a href="javascript:;">关于我们</a>
+                        <a href="javascript:;">帮助中心</a>
+                        <a href="javascript:;">售后服务</a>
+                        <a href="javascript:;">配送与验收</a>
+                        <a href="javascript:;">商务合作</a>
+                        <a href="javascript:;">搜索推荐</a>
+                        <a href="javascript:;">友情链接</a>
+                    </p>
+                    <p>CopyRight © 小兔鲜儿</p>
+                </div>
             </div>
         </div>
     </footer>
 </template>
 
-<style scoped>
-.app-footer {
+<style scoped lang='scss'>
+.app_footer {
+    overflow: hidden;
     background-color: #f5f5f5;
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 0;
-    position: bottom;
-}
+    padding-top: 20px;
 
-.app-footer .contact .container {
-    display: flex;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 200px;
-    position: absolute;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
+    .contact {
+        background: #fff;
 
-.app-footer .contact .container dl {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-}
+        .container {
+            padding: 60px 0 40px 25px;
+            display: flex;
+        }
 
-.app-footer .contact .container dt {
-    margin-bottom: 10px;
-    flex-basis: 100%;
-}
+        dl {
+            height: 190px;
+            text-align: center;
+            padding: 0 72px;
+            border-right: 1px solid #f2f2f2;
+            color: #999;
 
-.app-footer .contact .container dd {
-    margin: 0 10px 10px 0;
-    padding: 10px;
-    width: 80px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    text-align: center;
-    font-size: 14px;
-    transition: background-color 0.3s, color 0.3s;
-}
+            &:first-child {
+                padding-left: 0;
+            }
 
-.app-footer .contact .container dd:hover {
-    background-color: #e0e0e0;
-    color: #333;
-}
+            &:last-child {
+                border-right: none;
+                padding-right: 0;
+            }
+        }
 
-.app-footer .contact .container dd.hostline {
-    width: auto;
-    height: auto;
-    border: none;
-    padding: 0;
-    font-size: 16px;
-    text-align: left;
-    transition: none;
-}
+        dt {
+            line-height: 1;
+            font-size: 18px;
+        }
 
-.app-footer .contact .container dd.hostline:hover {
-    background-color: transparent;
-    color: inherit;
-}
+        dd {
+            margin: 36px 12px 0 0;
+            float: left;
+            width: 92px;
+            height: 92px;
+            padding-top: 10px;
+            border: 1px solid #ededed;
 
-.app-footer .contact .container dd i {
-    font-size: 24px;
-    margin-bottom: 5px;
-}
+            .iconfont {
+                font-size: 36px;
+                display: block;
+                color: #666;
+            }
 
-@media (max-width: 768px) {
-    .app-footer .contact .container dl {
-        justify-content: center;
+            &:hover {
+                .iconfont {
+                    color: $xtxColor;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+
+
+            .download {
+                padding-top: 5px;
+                font-size: 14px;
+                width: auto;
+                height: auto;
+                border: none;
+
+                span {
+                    display: block;
+                }
+
+                a {
+                    display: block;
+                    line-height: 1;
+                    padding: 10px 25px;
+                    margin-top: 5px;
+                    color: #fff;
+                    border-radius: 2px;
+                    background-color: $xtxColor;
+                }
+            }
+
+        }
+
+        .qrcode img {
+            width: 92px;
+            height: 92px;
+            border: 1px solid #ededed;
+        }
+
+        .hotline {
+            padding-top: 20px;
+            font-size: 22px;
+            color: #666;
+            width: auto;
+            height: auto;
+            border: none;
+        }
+        small {
+            display: block;
+            font-size: 15px;
+            color: #999;
+        }
     }
 
-    .app-footer .contact .container dd {
-        width: 60px;
-        height: 80px;
-        font-size: 12px;
+    .extra {
+        background-color: #333;
     }
 
-    .app-footer .contact .container dd i {
-        font-size: 20px;
+    .slogan {
+        height: 178px;
+        line-height: 58px;
+        padding: 60px 100px;
+        border-bottom: 1px solid #434343;
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            height: 58px;
+            line-height: 58px;
+            color: #fff;
+            font-size: 28px;
+
+            i {
+                font-size: 50px;
+                vertical-align: middle;
+                margin-right: 10px;
+                font-weight: 100;
+            }
+
+            span {
+                vertical-align: middle;
+                text-shadow: 0 0 1px #333;
+            }
+        }
+    }
+
+    .copyright {
+        height: 170px;
+        padding-top: 40px;
+        text-align: center;
+        color: #999;
+        font-size: 15px;
+
+        p {
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #999;
+            line-height: 1;
+            padding: 0 10px;
+            border-right: 1px solid #999;
+
+            &:last-child {
+                border-right: none;
+            }
+        }
     }
 }
-
 </style>
