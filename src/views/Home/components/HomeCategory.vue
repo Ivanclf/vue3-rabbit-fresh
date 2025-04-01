@@ -9,18 +9,18 @@ const categoryStore = useCategoryStore()
     <ul class="menu">
       <li v-for="item in categoryStore.categoryList" :key="item">
         <router-link to="/">{{ item.name }}</router-link>
-        <router-link v-for="i in 2" :key="i" to="/">南北干货</router-link>
+        <router-link v-for="i in item.childrenArrayList" :key="i" to="/">{{ i.name }}</router-link>
 
         <div class="layer">
           <h4>分类推荐</h4>
           <ul>
-            <li v-for="i in 5" :key="i">
+            <li v-for="i in item.goodsArrayList" :key="i.id">
               <router-link to="/">
                 <img alt="" />
                 <div class="info">
-                  <p class="name ellipsis-2">男士外套</p>
-                  <p class="desc ellipsis">男士外套，冬季必选</p>
-                  <p class="price"><i>￥</i>200.00</p>
+                  <p class="name ellipsis-2">{{ i.name }}</p>
+                  <p class="desc ellipsis">{{ i.desc }}</p>
+                  <p class="price"><i>￥</i>{{ i.price }}</p>
                 </div>
               </router-link>
             </li>
@@ -63,7 +63,7 @@ const categoryStore = useCategoryStore()
                 height: 500px;
                 background: rgba(255, 255, 255, 0.8);
                 position: absolute;
-                left: 200px;
+                left: 250px;
                 top: 0;
                 display: none;
                 padding: 0 15px;
@@ -124,6 +124,7 @@ const categoryStore = useCategoryStore()
 
                                 .desc {
                                     color: #999;
+                                    overflow: hidden;
                                 }
 
                                 .price {
