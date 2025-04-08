@@ -12,7 +12,7 @@ const categoryStore = useCategoryStore()
         <router-link v-for="i in item.childrenArrayList" :key="i" to="/">{{ i.name }}</router-link>
 
         <div class="layer">
-          <h4>分类推荐</h4>
+          <h4>分类推荐 <small>根据您的购买或浏览记录推荐</small></h4>
           <ul>
             <li v-for="i in item.goodsArrayList" :key="i.id">
               <router-link to="/">
@@ -33,8 +33,8 @@ const categoryStore = useCategoryStore()
 
 <style scoped lang='scss'>
 .home-category {
-    height: 500px;
     width: 250px;
+    height: 500px;
     background: rgba(0, 0, 0, 0.8);
     position: relative;
     z-index: 99;
