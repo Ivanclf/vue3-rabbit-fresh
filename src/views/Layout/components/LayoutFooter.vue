@@ -175,7 +175,7 @@
     }
 
     .slogan {
-        height: 178px;
+        height: 100px;
         line-height: 58px;
         padding: 60px 100px;
         border-bottom: 1px solid #434343;
