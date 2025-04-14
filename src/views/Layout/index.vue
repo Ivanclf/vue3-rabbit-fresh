@@ -2,7 +2,8 @@
     <layout-nav />
     <layout-header />
     <layout-fixed />
-    <router-view />
+    <!-- <router-view :key="$route.fullPath"/> -->
+     <router-view/>
     <layout-footer />
 </template>
 

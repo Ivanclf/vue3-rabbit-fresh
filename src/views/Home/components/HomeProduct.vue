@@ -3,10 +3,11 @@ import { onMounted, ref } from 'vue';
 import HomePanel from './HomePanel.vue'
 import { getGoodsAPI } from '@/apis/home'
 import GoodsItem from './GoodsItem.vue';
+
 const goodsProduct = ref([])
 const getGoods = async () => {
     const res = await getGoodsAPI()
-    goodsProduct.value = res
+    goodsProduct.value = res.result
 }
 
 onMounted(() => getGoods())

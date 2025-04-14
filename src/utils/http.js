@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const httpInstance = axios.create({
-    baseURL:'http://127.0.0.1:8080',
+    baseURL:'http://pcapi-xiaotuxian-front-devtest.itheima.net',
     timeout: 5000,
 })
 

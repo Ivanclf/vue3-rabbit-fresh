@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getCategoryAPI } from "@/apis/category"
+import { getCategoryAPI } from "@/apis/layout"
 
 export const useCategoryStore = defineStore("category", () => {
     // state
@@ -8,7 +8,7 @@ export const useCategoryStore = defineStore("category", () => {
     // action
     const getCategory = async () => {
         const res = await getCategoryAPI()
-        categoryList.value = res
+        categoryList.value = res.result
     }
 
     return {
