@@ -11,6 +11,8 @@ import "@/styles/common.scss"
 // 懒加载指令插件
 import { lazyPlugin } from './directives'
 
+// 全局组件插件
+import { componentPlugin } from './components'
 
 const app = createApp(App)
 

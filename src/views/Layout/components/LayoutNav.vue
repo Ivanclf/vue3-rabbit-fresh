@@ -8,7 +8,7 @@ const confirm = () => {
     <nav class="app-topnav">
         <div class="container">
             <ul>
-                <template v-if=true>
+                <template v-if="false">
                     <li>
                         <a href="javascript:;">
                             <i class=" iconfont icon-user">name</i>
