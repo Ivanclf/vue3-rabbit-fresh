@@ -1,17 +1,23 @@
 <script setup>
-const confirm = () => {
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
 
-};
+const userStore = useUserStore()
+const router = useRouter()
+const confirm = () => {
+    userStore.clearUserInfo()
+    router.push('/login')
+}
 </script>
 
 <template>
     <nav class="app-topnav">
         <div class="container">
             <ul>
-                <template v-if="false">
+                <template v-if="userStore.userInfo.token">
                     <li>
                         <a href="javascript:;">
-                            <i class=" iconfont icon-user">name</i>
+                            <i class=" iconfont icon-user"></i>{{ userStore.userInfo.account }}
                         </a>
                     </li>
                     <li>

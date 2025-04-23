@@ -1,6 +1,12 @@
 <script setup>
 import { ref } from 'vue';
+import { ElMessage } from 'element-plus';
+import 'element-plus/theme-chalk/el-message.css'
+import { useRouter } from 'vue-router';
 
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 
 // 表单校验
 const form = ref({
@@ -32,10 +38,19 @@ const rules = {
 }
 
 const formRef = ref(null)
+const router = useRouter()
 const doLogin = () => {
-    formRef.value.validate((valid) => {
-        if(valid) {
-            
+    const { account, password } = form.value
+    formRef.value.validate(async (valid) => {
+        if (valid) {
+            userStore.getUserInfo({ account, password })
+            // 成功
+            ElMessage({ type: 'success', message: '登录成功' })
+            router.replace({ path: '/' })
+
+            // 失败
+
+
         }
     })
 }
@@ -60,7 +75,8 @@ const doLogin = () => {
                 <nav><a href="javascript:;">用户登录</a></nav>
                 <div class="account-box">
                     <div class="form">
-                        <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+                        <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px"
+                            status-icon>
                             <el-form-item prop="account" label="账户">
                                 <el-input v-model="form.account" />
                             </el-form-item>
