@@ -7,7 +7,7 @@ const cartStore = useCartStore()
 <template>
     <div class="cart">
         <a class="curr" href="javascript:;">
-            <i class="iconfont icon-cart"></i><em>{{ cartStore.cartList.length }}</em>
+            <i class="iconfont icon-shoppingcart"></i><em>{{ cartStore.cartList.length }}</em>
         </a>
         <div class="layer">
             <div class="list">
@@ -16,13 +16,11 @@ const cartStore = useCartStore()
                     <RouterLink to="">
                         <img :src="i.picture" alt="" />
                         <div class="center">
-                            <p class="name ellipsis-2">
-                                {{ i.name }}
-                            </p>
-                            <p class="attr ellipsis">{{ i.attrsText }}</p>
+                            <p class="name ellipsis-2">{{ i.name }}</p>
+                            <p class="attr ellipsis">{{ i.attrText }}</p>
                         </div>
                         <div class="right">
-                            <p class="price">&yen;{{ i.price }}</p>
+                            <p class="price">&yen; {{ i.price }}</p>
                             <p class="count">x{{ i.count }}</p>
                         </div>
                     </RouterLink>
@@ -33,7 +31,7 @@ const cartStore = useCartStore()
             <div class="foot">
                 <div class="total">
                     <p>共 {{ cartStore.allCount }} 件商品</p>
-                    <p>&yen; {{ cartStore.allPrice.toFixed(2) }} </p>
+                    <p>&yen; {{ cartStore.allPrice.toFixed(2) }}</p>
                 </div>
                 <el-button size="large" type="primary" @click="$router.push('/cartlist')">去购物车结算</el-button>
             </div>
