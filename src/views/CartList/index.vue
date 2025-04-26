@@ -33,8 +33,8 @@ const delCart = (skuId) => {
 
                     <tbody>
                         <tr v-for="i in cartStore.cartList" :key="i.id">
-                            <td><el-checkbox :model-value="i.selected"
-                                    @change="(selected) => singleCheck(i, selected)" />
+                            <td>
+                                <el-checkbox :model-value="i.selected" @change="(selected) => singleCheck(i, selected)" />
                             </td>
                             <td>
                                 <div class="goods">
@@ -77,7 +77,7 @@ const delCart = (skuId) => {
                     共 {{ cartStore.allCount }} 件商品，已选择 {{ cartStore.selectedCount }} 件，商品合计 <span class="red"> &yen; {{ cartStore.selectedPrice.toFixed(2) }} </span>
                 </div>
                 <div class="total">
-                    <el-button size="large" type="primary">下单结算</el-button>
+                    <el-button size="large" type="primary" @click="$router.push('/checkout')">下单结算</el-button>
                 </div>
             </div>
         </div>
