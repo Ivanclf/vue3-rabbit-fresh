@@ -1,10 +1,10 @@
 <script setup>
-import {getOrderAPI} from '@/apis/pay'
+import { getOrderAPI } from '@/apis/pay'
 import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const orderInfo = ref({})
-const route = useRoute
+const route = useRoute()
 
 const getOrderInfo = async () => {
     const res = await getOrderAPI(route.query.orderId)
@@ -18,8 +18,8 @@ onMounted(() => getOrderInfo())
     <div class="xtx-pay-page">
         <div class="container">
             <div class="pay-result">
-                <span class="iconfont icon-queren" v-if="$route.query.payResult === 'true'"></span>
-                <span class="iconfont icon-shanchu" v-else></span>
+                <span class="iconfont icon-queren green" v-if="$route.query.payResult === 'true'"></span>
+                <span class="iconfont icon-shanchu red" v-else></span>
                 <p class="tit">支付{{ $route.query.payResult === 'true' ? '成功' : '失败' }}</p>
                 <p class="tip">我们将尽快为您发货，收货期间请保持手机畅通</p>
                 <p>支付方式：<span>支付宝</span></p>

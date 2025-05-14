@@ -27,7 +27,7 @@ httpInstance.interceptors.response.use(res => res.data, e => {
     // 统一错误提示
     ElMessage({
         type: 'warning',
-        message: e.response.data.message
+        message: e.response.data?.message
     })
     // 401token失败处理
     if(e.response.status === 401) {
